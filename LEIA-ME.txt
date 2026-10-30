@@ -1,0 +1,29 @@
+# REN KUROGANE — Windows build project
+
+Este pacote prepara o HTML enviado para ser empacotado como aplicativo Windows usando Electron.
+
+## O que está configurado
+- Janela Windows 1280×720, redimensionável (mínimo 800×448).
+- Tela cheia pelo F11; Escape sai da tela cheia.
+- HTML original mantido como `index.html`.
+- Gera instalador Windows (`.exe`) e versão portátil (`.exe`).
+- O jogo usa `localStorage` para configurações/progresso; o Electron mantém esse armazenamento no perfil do aplicativo.
+
+## Gerar no Windows
+1. Instale Node.js 22 (LTS).
+2. Extraia esta pasta.
+3. Abra o terminal dentro dela.
+4. Execute:
+   ```bash
+   npm install
+   npm run dist
+   ```
+5. Os executáveis aparecerão na pasta `dist`.
+
+## Gerar sem ter um PC Windows (GitHub Actions)
+O arquivo `.github/workflows/windows.yml` já está incluído. Envie o conteúdo deste projeto para um repositório GitHub, abra a aba **Actions** e execute **Build Windows EXE** (ou faça push na branch `main`). Ao terminar, baixe o artefato `REN-KUROGANE-Windows`, que contém os `.exe`.
+
+## Observações importantes
+- Este pacote é o projeto de compilação, não um `.exe` já compilado. A geração final precisa rodar em um ambiente de build Windows (o workflow do GitHub Actions faz isso).
+- O HTML original foi mantido sem alterações no jogo. A única dependência externa detectada no HTML é a fonte do Google Fonts; se o computador estiver offline, o jogo usa as fontes alternativas já declaradas no CSS.
+- Teste o executável em um PC Windows antes de publicar no itch.io.

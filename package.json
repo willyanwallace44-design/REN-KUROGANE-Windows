@@ -1,0 +1,52 @@
+{
+  "name": "ren-kurogane-the-path-of-vengeance",
+  "version": "0.0.20",
+  "description": "REN KUROGANE: THE PATH OF VENGEANCE - Windows edition",
+  "main": "main.cjs",
+  "author": "Willyan",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis portable"
+  },
+  "devDependencies": {
+    "electron": "^34.3.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.willyanxdev.renkurogane",
+    "productName": "REN KUROGANE - The Path of Vengeance",
+    "asar": true,
+    "files": [
+      "index.html",
+      "main.cjs",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
